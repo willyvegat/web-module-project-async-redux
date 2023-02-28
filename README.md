@@ -25,6 +25,8 @@ In this project you'll choose an api to consume. You will build an application f
 - [ x] Create a forked copy of this project.
 - [ x] Start up the app using `npm start`.
 - [ x] Add your code into teh `\src` folder.
+key: F9yz06P5ZP1n53kabNVkRfXQb9WusH4a
+https://api.giphy.com/v1/gifs/search?api_key=F9yz06P5ZP1n53kabNVkRfXQb9WusH4a&q=dogs
 
 ### Task 2: Minimum Viable Product
 
