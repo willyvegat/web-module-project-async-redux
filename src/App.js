@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import GifList from './components/GifList';
-import data from './data/gifs';
 import GifForm from './components/GifForm';
+import data from './data/gifs';
 
 function App() {
   const gifs = data;
