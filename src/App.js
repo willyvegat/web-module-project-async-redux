@@ -5,12 +5,12 @@ import './App.css';
 
 import GifList from './components/GifList';
 import GifForm from './components/GifForm';
-import data from './data/gifs';
 
-function App() {
-  const gifs = data;
-  const loading = false;
-  const error = '';
+function App(props) {
+  const { loading } = props;
+  // const gifs = data;
+  // const loading = false;
+  // const error = '';
 
   return (
     <div className="App">
@@ -18,11 +18,17 @@ function App() {
       <GifForm />
 
       {
-        loading ? <h3>We are loading</h3> : <GifList gifs={gifs} />
+        loading ? <h3>We are loading</h3> : <GifList />
       }  
 
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    loading: state.loading
+  }
+}
+
+export default connect(mapStateToProps)(App);
