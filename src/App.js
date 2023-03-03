@@ -2,19 +2,35 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import './App.css';
+import { useEffect } from 'react';
+
+import {isFetching} from './actions/index';
 
 import GifList from './components/GifList';
 import GifForm from './components/GifForm';
 
+import axios from 'axios';
+
 function App(props) {
-  const { loading, error } = props;
+  const { loading, error, isFetching } = props;
   // const gifs = data;
   // const loading = false;
   // const error = '';
 
+  // console.log(props);
+
+  useEffect(() => {
+    // console.log("is fetching");
+    isFetching();
+    axios.get("https://api.giphy.com/v1/gifs/search?api_key=F9yz06P5ZP1n53kabNVkRfXQb9WusH4a&q=dogs")
+      .then(res => {
+        console.log(res.data.data);
+      })
+  }, [])
+
   return (
     <div className="App">
-      <h1>Search for Gifs</h1>
+      <h1>Search for Gifs</h1>``
       <GifForm />
       {
         (error !== "") && <h3>{error}</h3>
@@ -35,4 +51,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+// const mapActionsToProps = () => {
+//   return {
+//     isFetching: isFetching
+//   }
+// }
+// export default connect(mapStateToProps, mapActionsToProps())(App);
+
+export default connect(mapStateToProps, { isFetching })(App);
