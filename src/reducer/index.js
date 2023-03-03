@@ -1,8 +1,8 @@
-import data from '../data/gifs';
-import { IS_FETCHING, FETCH_SUCCESS } from '../actions/index'
+// import data from '../data/gifs';
+import { IS_FETCHING, FETCH_SUCCESS, FETCH_ERROR } from '../actions/index'
 
 const initialState = {
-    gifs: data,
+    gifs: [],
     loading: false,
     error: ''
 
@@ -23,6 +23,12 @@ const reducer = (state = initialState, action) => {
                 gifs: action.payload,
                 error: ""
             }
+            case FETCH_ERROR:
+                return {
+                    ...state,
+                    loading: false,
+                    error: action.payload
+                }
         default:
             return(state);
     }
